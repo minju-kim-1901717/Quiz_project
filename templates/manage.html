@@ -25,14 +25,13 @@
       <h2>퀴즈 항목 추가</h2>
       <form method="post" action="{{ url_for('add') }}">
         <label>퀴즈(질문/취미)
-          <input type="text" name="question" placeholder="예: 클라이밍, 와인" required>
+          <input type="text" name="question" placeholder="예: 클라이밍" required>
         </label>
         <label>정답(이름/닉네임)
-          <input type="text" name="answer" placeholder="예: 손창범" required>
+          <input type="text" name="answer" placeholder="예: 김민주" required>
         </label>
         <button type="submit">추가</button>
       </form>
-      <p class="hint">※ 개인정보는 입력하지 마세요. 닉네임 등 익명 정보 권장.</p>
     </section>
 
     <section class="card">
