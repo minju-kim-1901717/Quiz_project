@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>취미 맞추기 퀴즈</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>취미 맞추기 퀴즈</h1>
+      <div class="sub">카드를 클릭하면 <strong>정답</strong>이 나타납니다. <span class="count" id="count">0/{{ items|length }}</span></div>
+    </div>
+    <div class="controls">
+      <button id="shuffle">섞기</button>
+      <button id="resetFront">초기화</button>
+      <label class="toggle">
+        <input id="hideSolved" type="checkbox" />
+        공개된 카드 숨기기
+      </label>
+      <a class="ghost" href="{{ url_for('manage') }}">항목 추가</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid" id="grid" aria-live="polite"></div>
+  </main>
+
+  <footer>
+    Minimal Beige+Black • 누구나 /manage에서 항목을 추가하고 바로 사용해보세요.
+  </footer>
+
+  <script>
+    const SERVER_ITEMS = {{ items|tojson }};
+  </script>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
