@@ -1,22 +1,39 @@
-# Quiz App — Public Mode (No PIN)
 
-누구나 `/manage`에서 퀴즈와 정답을 자유롭게 추가/삭제할 수 있는 공개 모드.
-베이지+블랙 미니멀 디자인, 카드 클릭 시 **퀴즈 → 정답** 전환.
+# 🧩 취미 맞추기 퀴즈
 
-## 로컬 실행
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python app.py
+누구나 접속해서 카드(퀴즈)를 눌러 **퀴즈 ↔ 정답**을 확인하는 미니멀 웹앱
+관리자 로그인 없이 **/manage**에서 바로 항목(퀴즈/정답)을 추가·삭제할 수 있음
+
+---
+
+## ✨ 기능
+- 카드 클릭: **퀴즈(문항)** ↔ **정답** 전환 (상단 배지로 상태 표시)
+- **섞기 / 초기화 / 공개된 카드 숨기기** 컨트롤
+- **/manage** 페이지에서 누구나 항목 추가/삭제 (로그인 없음)
+- 접근성: 스페이스바로 카드 토글 가능(키보드 지원)
+
+---
+
+## 🗺️ 경로
+- `/` : 퀴즈 페이지  
+- `/manage` : 항목 관리(추가/삭제)  
+- `/api/items` : 등록된 항목 JSON
+
+---
+
+## 📁 폴더 구조
+
+```
+.
+├─ app.py                  # Flask 엔트리
+├─ templates/
+│  ├─ index.html           # 퀴즈 페이지
+│  └─ manage.html          # 항목 관리
+├─ static/
+│  ├─ style.css            # 베이지+블랙 테마
+│  └─ app.js               # 카드 토글/섞기/필터 로직
+├─ requirements.txt        # Flask 의존성
+├─ vercel.json             # Vercel 라우팅/런타임
+└─ README.md
 ```
 
-- `/` : 퀴즈 페이지
-- `/manage` : 항목 관리(로그인 없음)
-- `/api/items` : JSON API
-
-## Vercel 배포
-- `vercel.json` 포함 (Python 런타임 자동 인식)
-- 환경변수(선택): `DATA_FILE=/tmp/data.json` — Vercel에서 쓰기 가능한 경로
-
-> ⚠️ /tmp 저장소는 영속적이지 않을 수 있습니다. 장기 저장은 S3/Supabase 등 외부 저장 권장.
